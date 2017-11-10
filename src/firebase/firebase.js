@@ -2,16 +2,16 @@ import * as firebase from 'firebase';
 
 // Initialize Firebase
 const config = {
-  apiKey: "AIzaSyBmx7ZrGmQjYkse9pGyQwlOurdoDpOHOXo",
-  authDomain: "expensify-9ddb1.firebaseapp.com",
-  databaseURL: "https://expensify-9ddb1.firebaseio.com",
-  projectId: "expensify-9ddb1",
-  storageBucket: "expensify-9ddb1.appspot.com",
-  messagingSenderId: "604023416165"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);
 
-firebase.database().ref().set({
-  name: "ali"
-})
+const database = firebase .database();
+
+export {firebase, database as default};
